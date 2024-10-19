@@ -10,6 +10,3 @@ def index():
 @app.route('/<path:path>')
 def static_files(path):
     return f"{path}"
-
-if __name__ == '__main__':
-    app.run(debug=False, port=80)
