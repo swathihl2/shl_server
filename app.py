@@ -42,5 +42,7 @@ def string_calc():
 
     except Exception as e:
         pass
-    return f"_{numbers}_ {result}"
+    except NegativeNumberException as e:
+      return e
+    return f"{result}"
 
