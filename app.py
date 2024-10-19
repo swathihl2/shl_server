@@ -16,9 +16,8 @@ def static_files():
     data = request.get_json()
     result = 0 
     try; 
-
-        if data:
-           result = data
+      if data:
+        result = data
     except Exception as e:
-        pass
+      pass
     return f"{data} {result}"
