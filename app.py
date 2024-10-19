@@ -40,9 +40,10 @@ def string_calc():
 
             result = sum(int(num) for num in num_list if num)
 
-    except Exception as e:
-        pass
     except NegativeNumberException as e:
-      return e
+        return f"error: {e}"
     return f"{result}"
 
+
+if __name__ == '__main__':
+    app.run(debug=True, port=8000)
