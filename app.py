@@ -1,4 +1,3 @@
-# app.py
 import re
 
 from flask import Flask, request
@@ -41,9 +40,6 @@ def string_calc():
             result = sum(int(num) for num in num_list if num)
 
     except NegativeNumberException as e:
-        return f"error: {e}"
+        return f"error: {e.__str__()}"
     return f"{result}"
 
-
-if __name__ == '__main__':
-    app.run(debug=True, port=8000)
