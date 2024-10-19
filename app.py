@@ -10,3 +10,10 @@ def index():
 @app.route('/<path:path>')
 def static_files(path):
     return f"you are visiting this site{path}"
+
+
+@app.route('/stringcalc')
+def static_files():
+    data = request.get_json()
+    
+    return f"you are visiting this site{data}"
