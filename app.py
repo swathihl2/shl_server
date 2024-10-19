@@ -11,7 +11,7 @@ def index():
 def static_files(path):
     return f"you are visiting this site{path}"
 
-@app.route('/stringcalc')
+@app.route('/stringcalc', methods=['GET', 'POST'])
 def static_files():
     data = request.get_json()
     result = 0 
