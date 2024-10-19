@@ -2,8 +2,11 @@
 import re
 
 from flask import Flask, request
+from errors import NegativeNumberException
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
@@ -30,6 +33,11 @@ def string_calc():
             else:
                 delimiter = r'[,\n]'
             num_list = re.split(delimiter, numbers)
+
+            negatives = [int(num) for num in num_list if int(num) < 0]
+            if negatives:
+                raise NegativeNumberException(negatives)
+
             result = sum(int(num) for num in num_list if num)
 
     except Exception as e:
