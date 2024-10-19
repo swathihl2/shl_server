@@ -17,8 +17,8 @@ def static_files():
     result = 0 
     try; 
 
-        if data
-    
+        if data:
+           result = data
     except Exception as e:
         pass
     return f"{data} {result}"
