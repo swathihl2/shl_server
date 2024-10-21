@@ -18,7 +18,7 @@ def static_files(path):
     return f"you are visiting this site{path}"
 
 @app.route('/stringcalc', methods=['GET', 'POST'])
-def string_calc():
+def string_calculator():
     data = request.get_json()
     numbers: str = data['numbers']
     print(numbers)
