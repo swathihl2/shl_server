@@ -1,6 +1,6 @@
 import re
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 from errors import NegativeNumberException
 from flask_cors import CORS
 
@@ -10,7 +10,7 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return "Welcome to SHL controller"
+    return render_template('home.html')
 
 
 @app.route('/<path:path>')
