@@ -1,38 +1,17 @@
-import re
 
-from flask import Flask, request, render_template
-from errors import NegativeNumberException
+from flask import Flask, render_template
 from flask_cors import CORS
+
+from controller.item_controller import item_bp
+from controller.calculator_controller import calculator_bp
 
 app = Flask(__name__)
 CORS(app)
+
+app.register_blueprint(item_bp)
+app.register_blueprint(calculator_bp)
 
 
 @app.route('/')
 def index():
     return render_template('home.html')
-
-
-@app.route('/<path:path>')
-def static_files(path):
-    return f"you are visiting this site{path}"
-
-@app.route('/stringcalc', methods=['GET', 'POST'])
-def string_calculator():
-    data = request.get_json()
-    numbers: str = data['numbers']
-    print(numbers)
-    result = 0
-    try:
-        if numbers:
-            num_list = re.findall(r'-?\d+', numbers)
-
-            negatives = [int(num) for num in num_list if int(num) < 0]
-            if negatives:
-                raise NegativeNumberException(negatives)
-
-            result = sum(int(num) for num in num_list)
-
-    except NegativeNumberException as e:
-        return f"error: {e.__str__()}"
-    return f"{result}"

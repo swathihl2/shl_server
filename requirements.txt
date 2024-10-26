@@ -4,3 +4,4 @@ requests
 flask-cors
 prometheus_client
 Flask-SQLAlchemy
+pymongo
