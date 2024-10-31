@@ -4,7 +4,7 @@ from flask_cors import CORS
 from controller.item_controller import item_bp
 from controller.calculator_controller import calculator_bp
 from controller.prometheus_controller import prom_bp
-from metrics.health_scheduler import start_scheduler
+# from metrics.health_scheduler import start_scheduler
 
 app = Flask(__name__)
 CORS(app)
