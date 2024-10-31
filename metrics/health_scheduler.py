@@ -1,9 +1,12 @@
 import threading
-import time
 
 import requests
-import schedule
+
 health_status = {"status": "unknown"}
+
+
+def start_scheduler():
+    check_health()
 
 
 def check_health():
@@ -17,14 +20,5 @@ def check_health():
     except Exception as e:
         health_status = {"status": "error", "message": str(e)}
 
-
-def run_scheduler():
-    schedule.every(30).seconds.do(check_health)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
-
-def start_scheduler():
-    scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
-    scheduler_thread.start()
+    # Schedule the next health check
+    threading.Timer(30, check_health).start()
