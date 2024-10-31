@@ -21,4 +21,4 @@ def check_health():
         health_status = {"status": "error", "message": str(e)}
     time.sleep(30)
     # Schedule the next health check
-    threading.Timer(30, check_health).start()
+    # threading.Timer(30, check_health).start()
