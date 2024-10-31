@@ -5,8 +5,8 @@ import requests
 health_status = {"status": "unknown"}
 
 
-def start_scheduler():
-    check_health()
+# def start_scheduler():
+#     check_health()
 
 
 def check_health():
