@@ -1,5 +1,5 @@
 import threading
-
+import time
 import requests
 
 health_status = {"status": "unknown"}
@@ -19,6 +19,6 @@ def check_health():
             health_status = {"status": "unhealthy", "code": response.status_code}
     except Exception as e:
         health_status = {"status": "error", "message": str(e)}
-
+    time.sleep(30)
     # Schedule the next health check
     threading.Timer(30, check_health).start()
