@@ -15,3 +15,7 @@ app.register_blueprint(calculator_bp)
 @app.route('/')
 def index():
     return render_template('home.html')
+
+@app.route('/health')
+def index():
+    return "UP"
