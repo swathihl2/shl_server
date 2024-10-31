@@ -19,7 +19,7 @@ def check_health():
 
 
 def run_scheduler():
-    schedule.every(1).seconds.do(check_health)
+    schedule.every(30).seconds.do(check_health)
     while True:
         schedule.run_pending()
         time.sleep(1)
